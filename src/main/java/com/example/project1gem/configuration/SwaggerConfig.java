@@ -19,7 +19,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors
-                        .basePackage("com.harshil.project1gem"))
+                        .basePackage("com.example.project1gem"))
                 .build()
                 .apiInfo(apiDetails());
     }
@@ -27,6 +27,7 @@ public class SwaggerConfig {
     /**
      * This method provide custom details for API Documentation
      * related to project.
+     *
      * @return ApiInfo
      */
     private ApiInfo apiDetails() {
