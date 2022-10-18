@@ -14,6 +14,11 @@ import java.util.Collections;
 @EnableSwagger2
 public class SwaggerConfig {
 
+    /**
+     * Swagger custom documentation.
+     *
+     * @return Docket
+     */
     @Bean
     public Docket docket() {
         return new Docket(DocumentationType.SWAGGER_2)

@@ -15,6 +15,11 @@ public class MyDbHealthService implements HealthIndicator {
         return true;
     }
 
+    /**
+     * Health check.
+     *
+     * @return Health
+     */
     @Override
     public Health health() {
         if (isHealthGood()) {

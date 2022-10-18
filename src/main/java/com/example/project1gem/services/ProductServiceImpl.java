@@ -19,7 +19,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
 
     /**
-     * This method is used to Get All the Product from database
+     * This method is used to Get All the Product from database.
      *
      * @return List<Product>
      * @throws NoResourceFoundException No data found in database
