@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.util.List;
 
-
 @Slf4j
 @RestController
 public class ProductController {
@@ -33,7 +32,7 @@ public class ProductController {
     /**
      * Get All Products.
      *
-     * @return ResponseEntity<List < Product>>
+     * @return Response Entity of for product
      * @throws NoResourceFoundException No Data found
      */
     @GetMapping("/products")
@@ -51,8 +50,8 @@ public class ProductController {
      * Get request to get product acc. to specific productId.
      *
      * @param id productId
-     * @return ResponseEntity<Product>
-     * @throws NoResourceFoundException product id not found
+     * @return ResponseEntity <Product>
+     * @throws IdNotFoundException product id not found
      */
     @GetMapping("/products/{id}")
     @ApiOperation(
@@ -89,7 +88,7 @@ public class ProductController {
      *
      * @param product product body
      * @param id      productId
-     * @return ResponseEntity<Product>
+     * @return ResponseEntity  <Product>
      */
     @PutMapping("/products/{id}")
     @ApiOperation(
@@ -106,7 +105,7 @@ public class ProductController {
      * Delete request ro delete product from product database.
      *
      * @param id productId
-     * @return ResponseEntity<HttpStatus>
+     * @return ResponseEntity <HttpStatus>
      */
     @DeleteMapping("/products")
     @ApiOperation(

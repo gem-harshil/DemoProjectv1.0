@@ -22,17 +22,17 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.util.List;
 
+
 @Slf4j
 @RestController
 public class CategoryController {
-
     @Autowired
     private CategoryService categoryService;
 
     /**
      * Get All Category.
      *
-     * @return ResponseEntity<List < Category>>
+     * @return reponse entity
      * @throws NoResourceFoundException no data found
      */
     @GetMapping("/category")
