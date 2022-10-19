@@ -24,8 +24,9 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
-@Getter
+
 @Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -64,4 +65,5 @@ public class Category {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "categoryId", referencedColumnName = "categoryId")
     private List<Product> products;
+
 }
