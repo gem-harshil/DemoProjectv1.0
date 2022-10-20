@@ -1,10 +1,9 @@
 package com.example.project1gem.exception;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
 import java.util.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 @Data
 @AllArgsConstructor
