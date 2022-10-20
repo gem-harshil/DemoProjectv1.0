@@ -3,7 +3,7 @@ package com.example.project1gem.configuration;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
+
 
 @Component
 public class MyDbHealthService implements HealthIndicator {
