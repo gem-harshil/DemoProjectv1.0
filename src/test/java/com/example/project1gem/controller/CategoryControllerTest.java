@@ -1,8 +1,8 @@
 package com.example.project1gem.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.example.project1gem.model.Category;
 import com.example.project1gem.services.CategoryServiceImpl;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -51,6 +54,11 @@ public class CategoryControllerTest {
         category2 = new Category(2, "Mobile", "This category is of Mobile", new Date(), new Date(), true, false, null);
     }
 
+    /**
+     * Save Category Test.
+     *
+     * @throws Exception
+     */
     @Test
     void saveCategoryTest() throws Exception {
 
@@ -65,6 +73,11 @@ public class CategoryControllerTest {
 
     }
 
+    /**
+     * Get All Category Test.
+     *
+     * @throws Exception
+     */
     @Test
     void getAllCategoryTest() throws Exception {
 
@@ -79,6 +92,11 @@ public class CategoryControllerTest {
                 .andExpect(jsonPath("$.size()", is(list.size())));
     }
 
+    /**
+     * Get Category By Id Test.
+     *
+     * @throws Exception
+     */
     @Test
     void getCategoryByIdTest() throws Exception {
 
@@ -90,6 +108,11 @@ public class CategoryControllerTest {
                 .andExpect(jsonPath("$.categoryDescription", is(category1.getCategoryDescription())));
     }
 
+    /**
+     * Update Category Test
+     *
+     * @throws Exception
+     */
     @Test
     void updateCategoryTest() throws Exception {
 
@@ -103,6 +126,11 @@ public class CategoryControllerTest {
 
     }
 
+    /**
+     * Delete Category Test.
+     *
+     * @throws Exception
+     */
     @Test
     void deleteCategoryTest() throws Exception {
 

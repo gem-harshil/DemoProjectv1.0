@@ -32,7 +32,11 @@ public class CategoryServiceTest {
     @InjectMocks
     private CategoryServiceImpl categoryService;
 
-
+    /**
+     * Get All Category Test.
+     *
+     * @throws NoResourceFoundException No data present
+     */
     @Test
     public void testGetAllCategory() throws NoResourceFoundException {
         List<Category> categoryList = new ArrayList<>();
@@ -44,6 +48,9 @@ public class CategoryServiceTest {
         assertEquals(2, categoryService.getAllCategory().size());
     }
 
+    /**
+     * Get All Category Negative Testcase.
+     */
     @Test
     public void testGetAllCategoryException() {
 
@@ -54,6 +61,11 @@ public class CategoryServiceTest {
                 .isInstanceOf(NoResourceFoundException.class);
     }
 
+    /**
+     * Get Category Id test.
+     *
+     * @throws IdNotFoundException Id not found
+     */
     @Test
     public void testGetCategoryById() throws IdNotFoundException {
         Category category = new Category(1, "Laptop", "This category is of Laptop", new Date(), new Date(), true, false, null);
@@ -63,6 +75,9 @@ public class CategoryServiceTest {
         assertEquals("This category is of Laptop", this.categoryService.getCategoryById(1).getCategoryDescription());
     }
 
+    /**
+     * Get Category By Id negative Testcase.
+     */
     @Test
     public void testGetCategoryByIdException() {
         when(categoryRepository.findById(anyInt()))
@@ -72,6 +87,9 @@ public class CategoryServiceTest {
                 .isInstanceOf(IdNotFoundException.class);
     }
 
+    /**
+     * Save Category Test.
+     */
     @Test
     public void testSaveCategory() {
         Category category = new Category(1, "Laptop", "This category is of Laptop", new Date(), new Date(), true, false, null);
@@ -82,7 +100,12 @@ public class CategoryServiceTest {
         assertEquals(category, newCategory);
     }
 
-
+    /**
+     * \
+     * Update Category Test.
+     *
+     * @throws IdNotFoundException Id not found
+     */
     @Test
     public void testUpdateCategory() throws IdNotFoundException {
         Category category = new Category(1, "Laptop", "This category is of Laptop", new Date(), new Date(), true, false, null);
@@ -96,6 +119,9 @@ public class CategoryServiceTest {
 
     }
 
+    /**
+     * UPdate Category Negative Testcase.
+     */
     @Test
     public void testUpdateCategoryException() {
         when(categoryRepository.findById(anyInt())).thenReturn(Optional.empty());
@@ -104,6 +130,11 @@ public class CategoryServiceTest {
                 .isInstanceOf(IdNotFoundException.class);
     }
 
+    /**
+     * Delete Category Test.
+     *
+     * @throws IdNotFoundException id no found
+     */
     @Test
     public void testDeleteCategory() throws IdNotFoundException {
         Category category = new Category(1, "Laptop", "This category is of Laptop", new Date(), new Date(), true, false, null);
