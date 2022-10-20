@@ -5,12 +5,13 @@ import com.example.project1gem.exception.IdNotFoundException;
 import com.example.project1gem.exception.NoResourceFoundException;
 import com.example.project1gem.model.Category;
 import com.example.project1gem.repository.CategoryRepository;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
