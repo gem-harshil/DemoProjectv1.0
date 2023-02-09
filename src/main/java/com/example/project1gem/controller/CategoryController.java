@@ -13,6 +13,7 @@ import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,12 +21,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @Slf4j
 @RestController
+@RequestMapping("/category")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
@@ -36,15 +39,14 @@ public class CategoryController {
      * @return reponse entity
      * @throws NoResourceFoundException no data found
      */
-    @GetMapping("/category")
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(
             value = "Get All Category",
             notes = "This Http request is used to retrieve all Categories",
             response = Category.class)
     public ResponseEntity<List<Category>> getAllCategory() throws NoResourceFoundException {
-        ResponseEntity<List<Category>> responseEntity = new ResponseEntity<>(categoryService.getAllCategory(), HttpStatus.OK);
-        log.info("Get request to Get All category");
-        return responseEntity;
+        log.debug("Response Status for getAllCategory() : ",HttpStatus.OK);
+        return new ResponseEntity<>(categoryService.getAllCategory(), HttpStatus.OK);
     }
 
     /**
@@ -54,16 +56,14 @@ public class CategoryController {
      * @return ResponseEntity<Category>
      * @throws NoResourceFoundException Generate exception on invalid categoryId
      */
-    @GetMapping("/category/{id}")
+    @GetMapping("/{id}")
     @ApiOperation(
             value = "Get Category By Id",
             notes = "Get All category information for the given id",
             response = Category.class)
     public ResponseEntity<Category> getCategoryById(@ApiParam(value = "Id value for the category you need to retrieve", required = true) @PathVariable int id) throws IdNotFoundException {
-
-        ResponseEntity<Category> data = new ResponseEntity<>(categoryService.getCategoryById(id), HttpStatus.OK);
-        log.info("Getting Category Data by Id");
-        return data;
+        log.debug("Response Status for getCategoryById(() : ",HttpStatus.OK);
+        return new ResponseEntity<>(categoryService.getCategoryById(id), HttpStatus.OK);
     }
 
     /**
@@ -76,7 +76,7 @@ public class CategoryController {
     @ApiOperation(value = "To Save Category", notes = "This Http request is used to save a new Category Object", response = Category.class)
     public ResponseEntity<Category> saveCategory(@Valid @RequestBody Category category) {
         ResponseEntity<Category> categoryResponseEntity = new ResponseEntity<>(categoryService.saveCategory(category), HttpStatus.CREATED);
-        log.info("New Category Created Successfully");
+        log.debug("Response Status for saveCategory() : ",HttpStatus.OK);
         return categoryResponseEntity;
     }
 
@@ -94,7 +94,7 @@ public class CategoryController {
             response = Category.class)
     public ResponseEntity<Category> updateCategory(@Valid @RequestBody Category category, @ApiParam(name = "Id Value required to update specific Category record", required = true) @PathVariable int id) throws IdNotFoundException {
         ResponseEntity<Category> categoryResponseEntity = new ResponseEntity<>(categoryService.updateCategory(id, category), HttpStatus.OK);
-        log.info("New Category Updated Successfully");
+        log.debug("Response Status for updateCategory() : ",HttpStatus.OK);
         return categoryResponseEntity;
     }
 
@@ -110,9 +110,8 @@ public class CategoryController {
             notes = "This Http request is used to delete specific record from Categories",
             response = Category.class)
     public ResponseEntity<HttpStatus> deleteCategory(@ApiParam("Id value required to delete the specific object from category object from database") @RequestParam int id) throws IdNotFoundException {
-
         categoryService.deleteCategory(id);
-        log.info("Content Deleted Successfully");
+        log.debug("Response Status for updateCategory() : ",HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.OK);
 
     }
