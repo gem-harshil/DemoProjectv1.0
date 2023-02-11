@@ -107,8 +107,10 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                    <finalName>devops-integration</finalName>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
