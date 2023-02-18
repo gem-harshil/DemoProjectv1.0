@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyDbHealthService implements HealthIndicator {
     /**
-     * This methods check health of project.
+     * This method check health of project.
      *
      * @return boolean
      */

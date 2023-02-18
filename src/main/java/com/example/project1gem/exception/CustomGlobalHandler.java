@@ -1,7 +1,5 @@
 package com.example.project1gem.exception;
 
-import java.util.Date;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +12,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import java.util.Date;
 
 
 @ControllerAdvice
@@ -101,21 +101,8 @@ public class CustomGlobalHandler extends ResponseEntityExceptionHandler {
      * @param request webRequest
      * @return ResponseEntity<Object>
      */
-    @ExceptionHandler(NoResourceFoundException.class)
-    public final ResponseEntity<Object> handleNoResourceFoundException(NoResourceFoundException ex, WebRequest request) {
-        CustomErrorDetail errorDetail = new CustomErrorDetail(new Date(), ex.getMessage(), request.getDescription(false));
-        return new ResponseEntity<>(errorDetail, HttpStatus.NOT_FOUND);
-    }
-
-    /**
-     * Handles exception for invalid id.
-     *
-     * @param ex
-     * @param request
-     * @return
-     */
-    @ExceptionHandler(IdNotFoundException.class)
-    public final ResponseEntity<Object> handleIdNotFoundException(IdNotFoundException ex, WebRequest request) {
+    @ExceptionHandler(IllegalArgumentException.class)
+    public final ResponseEntity<Object> handleNoResourceFoundException(IllegalArgumentException ex, WebRequest request) {
         CustomErrorDetail errorDetail = new CustomErrorDetail(new Date(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetail, HttpStatus.NOT_FOUND);
     }
@@ -128,7 +115,7 @@ public class CustomGlobalHandler extends ResponseEntityExceptionHandler {
      * @return ResponseEntity<?>
      */
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> globalExceptionHandler(Exception ex, WebRequest request) {
+    public ResponseEntity<CustomErrorDetail> globalExceptionHandler(Exception ex, WebRequest request) {
         CustomErrorDetail errorDetails = new CustomErrorDetail(new Date(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
     }

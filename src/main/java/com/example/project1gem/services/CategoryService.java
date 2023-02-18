@@ -1,8 +1,6 @@
 package com.example.project1gem.services;
 
 
-import com.example.project1gem.exception.IdNotFoundException;
-import com.example.project1gem.exception.NoResourceFoundException;
 import com.example.project1gem.model.Category;
 
 import java.util.List;
@@ -10,13 +8,13 @@ import java.util.List;
 
 public interface CategoryService {
 
-    List<Category> getAllCategory() throws NoResourceFoundException;
+    List<Category> getAllCategory();
 
-    Category getCategoryById(int id) throws IdNotFoundException;
+    Category getCategoryById(int id);
 
     Category saveCategory(Category category);
 
-    Category updateCategory(int id, Category category) throws IdNotFoundException;
+    Category updateCategory(int id, Category category);
 
-    void deleteCategory(int id) throws IdNotFoundException;
+    void deleteCategory(int id);
 }
