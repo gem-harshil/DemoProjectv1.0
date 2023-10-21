@@ -16,8 +16,7 @@ springboot to mySQL database, Testing, Table mapping, swagger documentation, exc
 - PUT API to update department details.
 - DELETE API to soft delete department.
 
-## API Documentation
-
+## API Documentation (Open API)
 <img src="./assets/images/Screenshot_1221.png">
 <img src="./assets/images/Screenshot_1222.png">
 <img src="./assets/images/Screenshot_1223.png">
